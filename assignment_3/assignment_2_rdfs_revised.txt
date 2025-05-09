@@ -1,0 +1,441 @@
+@prefix : <http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/> .
+
+<http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/BelongsToDivision
+:BelongsToDivision rdf:type owl:ObjectProperty ;
+                   rdfs:domain :SeniorTeacher ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :BelongsToDivision ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Division
+                               ] ;
+                   rdfs:range :Division .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/BelongsToProgramme
+:BelongsToProgramme rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Student ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :BelongsToProgramme ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Programme
+                                ] ;
+                    rdfs:range :Programme .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Examiner
+:Examiner rdf:type owl:ObjectProperty ;
+          rdfs:domain :CourseOffering ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :Examiner ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :SeniorTeacher
+                      ] ;
+          rdfs:range :SeniorTeacher .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/GivenBy
+:GivenBy rdf:type owl:ObjectProperty ;
+         rdfs:domain :Course ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :GivenBy ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass :Division
+                     ] ;
+         rdfs:range :Division .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Include
+:Include rdf:type owl:ObjectProperty ;
+         rdfs:domain :ProgrammeInstance ;
+         rdfs:range :Course .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/OwnedByDepartment
+:OwnedByDepartment rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Programme ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :OwnedByDepartment ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Department
+                               ] ;
+                   rdfs:range :Department .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/OwnedByProgramme
+:OwnedByProgramme rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Course ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :OwnedByProgramme ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Programme
+                              ] ;
+                  rdfs:range :Programme .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#courseOfferingAcademicYear
+:courseOfferingAcademicYear rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :CourseOffering ;
+                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#courseOfferingAssistantHours
+:courseOfferingAssistantHours rdf:type owl:DatatypeProperty ;
+                              rdfs:domain :CourseOffering ;
+                              rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#courseOfferingCourseCode
+:courseOfferingCourseCode rdf:type owl:DatatypeProperty ;
+                          owl:equivalentProperty :courseCode ;
+                          rdfs:domain :CourseOffering ;
+                          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#courseOfferingStudyPeriod
+:courseOfferingStudyPeriod rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :CourseOffering ;
+                           rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#divisionDepartmentID
+:divisionDepartmentID rdf:type owl:DatatypeProperty ;
+                      owl:equivalentProperty :departmentID ;
+                      rdfs:domain :Division ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeCoursesAcademicYear
+:programmeCoursesAcademicYear rdf:type owl:DatatypeProperty ;
+                              rdfs:domain :ProgrammeCourses ;
+                              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeCoursesCourseCode
+:programmeCoursesCourseCode rdf:type owl:DatatypeProperty ;
+                            owl:equivalentProperty :courseCode ;
+                            rdfs:domain :ProgrammeCourses ;
+                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeCoursesCourseType
+:programmeCoursesCourseType rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :ProgrammeCourses ;
+                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeCoursesProgrammeCode
+:programmeCoursesProgrammeCode rdf:type owl:DatatypeProperty ;
+                               owl:equivalentProperty :programmeInstanceProgrammeCode ;
+                               rdfs:domain :ProgrammeCourses ;
+                               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeCoursesStudyYear
+:programmeCoursesStudyYear rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :ProgrammeCourses ;
+                           rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeInstanceID
+:programmeInstanceID rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :ProgrammeInstance ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#programmeInstanceProgrammeCode
+:programmeInstanceProgrammeCode rdf:type owl:DatatypeProperty ;
+                                owl:equivalentProperty :programmeCode ;
+                                rdfs:domain :ProgrammeInstance ;
+                                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#registrationsCourseOfferingInstanceID
+:registrationsCourseOfferingInstanceID rdf:type owl:DatatypeProperty ;
+                                       owl:equivalentProperty :courseOfferingInstanceID ;
+                                       rdfs:domain :Registrations ;
+                                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#registrationsStudentID
+:registrationsStudentID rdf:type owl:DatatypeProperty ;
+                        owl:equivalentProperty :studentID ;
+                        rdfs:domain :Registrations ;
+                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#studentYear
+:studentYear rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Student ;
+             rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#teacherDepartmentName
+:teacherDepartmentName rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Teacher ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#teacherDivisionName
+:teacherDivisionName rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Teacher ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#teachesCourseCode
+:teachesCourseCode rdf:type owl:DatatypeProperty ;
+                   owl:equivalentProperty :courseCode .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#teachesCourseOfferingInstanceID
+:teachesCourseOfferingInstanceID rdf:type owl:DatatypeProperty ;
+                                 owl:equivalentProperty :courseOfferingInstanceID ;
+                                 rdfs:domain :Teaches ;
+                                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#teachesTeacherID
+:teachesTeacherID rdf:type owl:DatatypeProperty ;
+                  owl:equivalentProperty :teacherID ;
+                  rdfs:domain :Teaches ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseCode
+:courseCode rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Course ,
+                        :CourseOffering ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseCredits
+:courseCredits rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Course ;
+               rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseLevel
+:courseLevel rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Course ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseName
+:courseName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Course ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseOfferingInstanceID
+:courseOfferingInstanceID rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :CourseOffering ;
+                          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseOfferingPlanningNumStudents
+:courseOfferingPlanningNumStudents rdf:type owl:DatatypeProperty ;
+                                   rdfs:domain :CourseOffering ;
+                                   rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/courseOfferingSeniorHours
+:courseOfferingSeniorHours rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :CourseOffering ;
+                           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/departmentID
+:departmentID rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Department ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/departmentName
+:departmentName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Department ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/divisionID
+:divisionID rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Division ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/divisionName
+:divisionName rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Division ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeCode
+:programmeCode rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Programme ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeDirector
+:programmeDirector rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Programme ,
+                               :SeniorTeacher ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeInstanceAcademicYear
+:programmeInstanceAcademicYear rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :ProgrammeInstance ;
+                               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeInstanceCourseType
+:programmeInstanceCourseType rdf:type owl:DatatypeProperty ;
+                             rdfs:domain :ProgrammeInstance ;
+                             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeInstanceStudyYear
+:programmeInstanceStudyYear rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :ProgrammeInstance ;
+                            rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/programmeName
+:programmeName rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Programme ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/registrationsGrade
+:registrationsGrade rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Registrations ;
+                    rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/registrationsStatus
+:registrationsStatus rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Registrations ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/studentGraduated
+:studentGraduated rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Student ;
+                  rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/studentID
+:studentID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Student ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/studentName
+:studentName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Student ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/teacherID
+:teacherID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Teacher ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/teacherName
+:teacherName rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Teacher ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/teachesAssignedHours
+:teachesAssignedHours rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Teaches ;
+                      rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/teachesReportedHours
+:teachesReportedHours rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Teaches ;
+                      rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#ProgrammeCourses
+:ProgrammeCourses rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#Registrations
+:Registrations rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6#Teaches
+:Teaches rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Course
+:Course rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/CourseOffering
+:CourseOffering rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Department
+:Department rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Division
+:Division rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Programme
+:Programme rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/ProgrammeInstance
+:ProgrammeInstance rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/SeniorTeacher
+:SeniorTeacher rdf:type owl:Class ;
+               rdfs:subClassOf :Teacher .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Student
+:Student rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/Teacher
+:Teacher rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/TeachingAssistant
+:TeachingAssistant rdf:type owl:Class ;
+                   owl:equivalentClass :TeachingAssistantStudent ;
+                   rdfs:subClassOf :Teacher .
+
+
+###  http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/TeachingAssistantStudent
+:TeachingAssistantStudent rdf:type owl:Class ;
+                          rdfs:subClassOf :Student .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
