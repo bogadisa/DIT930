@@ -1,3 +1,7 @@
+Group 38
+Haoqi Yu, Bjørn Magnus Hoddevik
+
+
 @prefix : <http://www.semanticweb.org/86151/ontologies/2025/3/untitled-ontology-6/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
