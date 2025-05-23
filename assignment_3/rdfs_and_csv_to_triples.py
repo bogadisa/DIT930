@@ -104,10 +104,10 @@ def df_to_rdf(
             ):
                 # if rdf_row[r"rdf:type{URIRef}"] == "owl:DatatypeProperty":
                 index = index.replace(":", "")
-                if index == key_column or (
-                    is_bnode and rdf_row[r"rdf:type{URIRef}"] == "owl:ObjectProperty"
-                ):
+                # index == key_column or
+                if is_bnode and rdf_row[r"rdf:type{URIRef}"] == "owl:ObjectProperty":
                     continue
+
                 if index in csv_data.columns:
                     full_graph.add(
                         (
